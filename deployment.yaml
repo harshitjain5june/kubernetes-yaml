@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+  labels:
+    app: my-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: frontend-ui
+          image: my-registry/my-app-frontend-ui:v1
+          ports:
+            - containerPort: 80
+        - name: backend-api
+          image: my-registry/my-app-backend-api:v1
+          ports:
+            - containerPort: 8080
