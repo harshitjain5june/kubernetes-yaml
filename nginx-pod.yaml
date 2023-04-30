@@ -16,3 +16,17 @@ spec:
         limits:
           memory: "2Gi"
           cpu: 2
+  tolerations:
+    - key: "app"
+      operator: "Equal"
+      value: "dev"
+      effect: "NoSchedule"
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: size
+              operator: In
+              values: 
+              - Large

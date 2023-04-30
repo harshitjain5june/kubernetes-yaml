@@ -3,6 +3,7 @@ kind: ReplicationController
 metadata:
   name: replicacontroller-nginx
 spec:
+  
   replicas: 3
   selector:
     app: replicacontroller-nginx
@@ -17,3 +18,10 @@ spec:
           image: nginx
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: 1
+          limits:
+            memory: "2Gi"
+            cpu: 2
